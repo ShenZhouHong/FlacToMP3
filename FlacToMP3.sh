@@ -2,10 +2,17 @@
 
 # Variables
 QUALITY=2 # Lower is better.
-CODEC="a libmp3lame" # Codec for converting flacs to MP3s.
+CODEC="a libmp3lame" # Codec for converting flac to MP3. (This worked on my Mac)
 OUTPUTDIR="." # Default set as current folder.
 INPUTTYPE="flac" # Input type is flac as default.
 OUTPUTTYPE="mp3" # Output type is MP3 as default.
+
+function dependencies_check () {
+    # Checks that the ffmpeg is installed and prints version information.
+    echo "Notice, the ffmpeg package must be installed."
+    ffmpeg -version
+    echo "Please make sure your version is the latest."
+}
 
 # Main program function
 function FlacToMP3 () {
