@@ -17,11 +17,9 @@ function dependencies_check () {
 # Main program function
 function FlacToMP3 () {
   # First makes sure that input type and output type are flac and mp3, respectively
-  if [ $INPUTTYPE == "flac" ] && [ $OUTPUTTYPE == "mp3" ]
-    then
+  if [ $INPUTTYPE == "flac" ] && [ $OUTPUTTYPE == "mp3" ]; then
       # Iterates over all .flac files in directory
-      for FILE in *.flac
-      do
+      for FILE in *.flac; do
         # Summons ffmpeg command with current file as input, and uses the libmp3lame codec.
         ffmpeg -i "$FILE" -codec:$CODEC -q:a $QUALITY "$OUTPUTDIR/${FILE%.*}.mp3";
       done
