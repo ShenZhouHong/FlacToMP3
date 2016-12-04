@@ -1,17 +1,19 @@
 #!/bin/bash
 
 # Variables
-QUALITY=2 # Lower is better.
+QUALITY=0 # Lower is better.
 CODEC="a libmp3lame" # Codec for converting flac to MP3. (This worked on my Mac)
 OUTPUTDIR="." # Default set as current folder.
 INPUTTYPE="flac" # Input type is flac as default.
 OUTPUTTYPE="mp3" # Output type is MP3 as default.
 
 function dependencies_check () {
-    # Checks that the ffmpeg is installed and prints version information.
-    echo "Notice, the ffmpeg package must be installed."
-    ffmpeg -version
-    echo "Please make sure your version is the latest."
+    command -v ffmpeg -version >/dev/null 2>&1 ||
+    	{ echo >&2 "Error: ffmpeg is needed to run this script."
+    		echo "       To install mktorrent, visit https://www.ffmpeg.org/"
+            echo "       or run \"apt-get install ffmpeg\" as root."
+    		echo; exit 1
+    	}
 }
 
 # Main program function
@@ -34,7 +36,7 @@ function FlacToMP3 () {
 }
 
 # Startup message.
-echo "Starting FlacToMP3, version 1.0.0."
+echo "Starting FlacToMP3, version 1.1.0."
 FlacToMP3
 
 # Exits with success as default exit value.
