@@ -10,8 +10,8 @@ OUTPUTTYPE="mp3" # Output type is MP3 as default.
 function dependencies_check () {
     command -v ffmpeg -version >/dev/null 2>&1 ||
     	{ echo >&2 "Error: ffmpeg is needed to run this script."
-    		echo "       To install mktorrent, visit https://www.ffmpeg.org/"
-            echo "       or run \"apt-get install ffmpeg\" as root."
+    		echo "To install mktorrent, visit https://www.ffmpeg.org/"
+            echo "or run \"apt-get install ffmpeg\" as root."
     		echo; exit 1
     	}
 }
